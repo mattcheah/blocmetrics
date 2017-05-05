@@ -1,3 +1,5 @@
 <h2>User: <%= @user.email %></h2>
 
 <p>This is the user profile for <%= @user.email %></p>
+
+<%= link_to "Edit User Information", edit_user_registration_path, class: "btn btn-lg btn-danger" %>
