@@ -7,8 +7,53 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-
-<%= yield %>
+  <div class="row">
+    <div class="col-md-6">
+      <h1>Blocmetrics</h1>
+      <p>A Decent Analytics Platform.</p>
+    </div>
+    <div class="col-md-6">
+      <p>  </p>
+    </div>
+  </div>
+  
+  <nav class="navbar navbar-default">
+    <div class="container-fluid">
+      <!-- Brand and toggle get grouped for better mobile display -->
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="#">BlocMetrics</a>
+      </div>
+  
+      <!-- Collect the nav links, forms, and other content for toggling -->
+      <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+        <ul class="nav navbar-nav">
+          <li><%= link_to 'Home', root_path %></li>
+          <li><%= link_to 'huh?', root_path %></li>
+        </ul>
+        <ul class="nav navbar-nav navbar-right">
+          <% if user_signed_in? %>
+            <li class="nav-border"><p class="navbar-text">Signed in as <%= current_user.email %></p></li>
+            <li class="nav-border"><%= link_to "Profile", user_path(current_user.id) %> </li>
+            <li><%= link_to 'Log Out', destroy_user_session_path, method: "DELETE" %></li>
+          <% else %>
+            <li class="nav-border"><%= link_to 'Sign In', new_user_session_path %></li>
+            <li><%= link_to 'Sign Up', new_user_registration_path %></li>
+          <% end %>
+        </ul>
+      </div><!-- /.navbar-collapse -->
+    </div><!-- /.container-fluid -->
+  </nav>
+  
+  <p class="notice"><%= notice %></p>
+  <p class="alert"><%= alert %></p>
+  
+  <%= yield %>
 
 </body>
 </html>
