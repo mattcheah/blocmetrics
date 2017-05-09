@@ -27,14 +27,18 @@
           <span class="icon-bar"></span>
           <span class="icon-bar"></span>
         </button>
-        <a class="navbar-brand" href="#">BlocMetrics</a>
+        <%= link_to "BlocMetrics", root_path, class: "navbar-brand" %>
       </div>
   
       <!-- Collect the nav links, forms, and other content for toggling -->
       <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
         <ul class="nav navbar-nav">
-          <li><%= link_to 'Home', root_path %></li>
-          <li><%= link_to 'huh?', root_path %></li>
+          <% if user_signed_in? %>
+            <li><%= link_to 'All Applications', root_path %></li>
+            <li><%= link_to 'Add Application', new_registered_application_path %></li>
+          <% else %>
+            <li><%= link_to 'Home', root_path %></li>
+          <% end %>
         </ul>
         <ul class="nav navbar-nav navbar-right">
           <% if user_signed_in? %>
@@ -50,8 +54,9 @@
     </div><!-- /.container-fluid -->
   </nav>
   
-  <p class="notice"><%= notice %></p>
-  <p class="alert"><%= alert %></p>
+  <% flash.each do |key, value| %>
+    <p class="alert alert-<%= key %>"><%= value %></p>
+  <% end %>
   
   <%= yield %>
 

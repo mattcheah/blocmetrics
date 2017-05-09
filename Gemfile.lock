@@ -211,8 +211,8 @@ DEPENDENCIES
   bootstrap-sass (~> 3.3.6)
   byebug
   coffee-rails (~> 4.1.0)
-  devise
-  factory_girl_rails
+  devise (~> 4.2.0)
+  factory_girl_rails (~> 4.0)
   faker
   jbuilder (~> 2.0)
   jquery-rails

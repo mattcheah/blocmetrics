@@ -32,7 +32,7 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
-gem 'devise'
+gem 'devise', '~> 4.2.0'
 gem 'bootstrap-sass', '~> 3.3.6'
 
 
@@ -48,7 +48,7 @@ group :development, :test do
   gem 'rspec-rails'
   gem 'shoulda'
   gem 'faker'
-  gem 'factory_girl_rails'
+  gem 'factory_girl_rails', '~> 4.0'
   gem 'pry-rails'
 end
 

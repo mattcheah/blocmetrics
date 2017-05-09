@@ -1,0 +1,20 @@
+<p>Welcome to BlocMetrics! Thank you for choosing our platform above others that are much more prepared to help you succeed.</p>
+
+
+<% if user_signed_in? %>
+    <h3>Your Registered Applications:</h3>
+    <% @apps.each do |app| %>
+        <div class="app-container container">
+            <p><strong><%= link_to app.name, registered_application_path(app.id) %></strong></p>
+            <p><small><%= app.url %></small></p>
+        </div>
+    <% end %>
+
+<% else %>
+<div class="row">
+    
+    <div class="col-md-6"><%= link_to "Sign In", new_user_session_path, class: "btn btn-lg btn-primary" %></div>
+    <div class="col-md-6"><%= link_to "Sign Up", new_user_registration_path, class: "btn btn-lg btn-default" %></div>
+    
+</div>
+<% end %>
