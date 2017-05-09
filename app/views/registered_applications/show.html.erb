@@ -1,3 +1,14 @@
 <h2>Application: <%= @app.name %></h2>
 <p>URL: <%= @app.url %></p>
 <%= link_to "Edit This Application", edit_registered_application_path, class: "btn btn-lg btn-warning" %>
+
+<h3>Events on <%= @app.url %></h3>
+<div class="container">
+
+    <% @events.each do |key, value| %>
+        <div class="event">
+            <h4><%= key %></h4>
+            <p>Occurances: <%= value.count %></p>
+        </div>
+    <% end %>
+</div>
