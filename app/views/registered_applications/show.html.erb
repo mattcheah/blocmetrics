@@ -1,6 +1,7 @@
 <h2>Application: <%= @app.name %></h2>
 <p>URL: <%= @app.url %></p>
 <%= link_to "Edit This Application", edit_registered_application_path, class: "btn btn-lg btn-warning" %>
+<%= link_to "Set Up Your Tracking Code", {controller: "registered_applications", action: "setup", id: @app}, class: "btn btn-lg btn-primary" %>
 
 <h3>Events on <%= @app.url %></h3>
 <div class="container">

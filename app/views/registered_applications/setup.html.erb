@@ -1,0 +1,13 @@
+<h2>Setting Up Your Event Tracking:</h2>
+
+<p>First, include this script in your app:</p>
+<textarea readonly="readonly" rows="5" cols="80">var blocmetrics={};blocmetrics.record=function(a,b){var c={event:{name:b},trackingCode:a},d=new XMLHttpRequest;d.open("POST","http://blocmetrics.mattcheah.c9users.io/api/events",!0),d.setRequestHeader("Content-Type","application/json"),d.send(JSON.stringify(c))};</textarea>
+<p>
+    When you want to track an event, call this javascript function within your app:<br>
+    <code>blocmetrics.record("<%= @app.id %>-<%= @app.code %>", "[YOUR EVENT NAME HERE]")</code>
+</p>
+
+<p>
+    For example, if I wanted to record a pageview, I would make sure to run this function whenever the page loaded: <br>
+    <code>blocmetrics.record("<%= @app.id %>-<%= @app.code %>", "Pageview")</code>
+</p>

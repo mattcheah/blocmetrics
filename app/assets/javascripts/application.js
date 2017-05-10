@@ -15,3 +15,16 @@
 //= require turbolinks
 //= require bootstrap-sprockets
 //= require_tree .
+
+var blocmetrics = {}
+
+blocmetrics.report = function(trackingCode, eventName) {
+    var event = {event: {name: eventName}, trackingCode: trackingCode};
+
+    var request = new XMLHttpRequest();
+    request.open("POST", "http://blocmetrics.mattcheah.c9users.io/api/events", true);
+    request.setRequestHeader('Content-Type', 'application/json');
+    request.send(JSON.stringify(event));
+    
+}
+

@@ -15,10 +15,18 @@ class API::EventsController < ApplicationController
     end
     
     def create
-        app = RegisteredApplication.find_by(url: request.env['HTTP_ORIGIN'])
+        name = event_params[:name]
+        trackingCode = event_params[:trackingCode]
+        trackingIndex = trackingCode.index('-')-1
+        id = trackingCode[0..trackingIndex]
+        app = RegisteredApplication.find(id)
         if app 
-            name = event_params[:name]
+            unless "#{app.id}-#{app.code}" == trackingCode
+                render json: "Tracking Code Not Recognized", status: :unprocessable_entity
+            end
+            
             @event = Event.create({name: name, registered_application_id: app.id})
+            
             if @event.save 
                 render json: @event, status: :created
             else
@@ -33,6 +41,6 @@ class API::EventsController < ApplicationController
     private
     
     def event_params 
-        params.require(:event).permit(:name)
+        params.require(:event).permit(:name, :trackingCode)
     end
 end

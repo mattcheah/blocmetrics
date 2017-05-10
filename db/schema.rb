@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170509230308) do
+ActiveRecord::Schema.define(version: 20170510160224) do
 
   create_table "events", force: :cascade do |t|
     t.string   "name"
@@ -26,8 +26,9 @@ ActiveRecord::Schema.define(version: 20170509230308) do
     t.string   "name"
     t.string   "url"
     t.integer  "user_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",                null: false
+    t.datetime "updated_at",                null: false
+    t.integer  "code",       default: 7677
   end
 
   add_index "registered_applications", ["user_id"], name: "index_registered_applications_on_user_id"

@@ -14,6 +14,10 @@ class RegisteredApplicationsController < ApplicationController
         @events = @app.events.group_by(&:name)
     end
     
+    def setup
+        @app = RegisteredApplication.find(params[:id])
+    end
+    
     def new
         @app = RegisteredApplication.new
     end
@@ -21,7 +25,7 @@ class RegisteredApplicationsController < ApplicationController
     def create
         name = params[:registered_application][:name]
         url = params[:registered_application][:url]
-        @app = current_user.registered_applications.new({name: name, url: url})
+        @app = current_user.registered_applications.new({name: name, url: url, code: rand(10000)})
         
         if @app.save
             flash[:success] = "Registered Application #{@app.name} has been created"

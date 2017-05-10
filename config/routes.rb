@@ -10,6 +10,7 @@ Rails.application.routes.draw do
 	end
   
   resources :registered_applications, only: [:index]
+  get '/registered_applications/:id/setup', to: 'registered_applications#setup'
 	
 	namespace :api, defaults: {format: :json} do
 	  match '/events', to: 'events#preflight', via: [:options]
