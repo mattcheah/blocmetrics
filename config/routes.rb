@@ -8,7 +8,13 @@ Rails.application.routes.draw do
   authenticate :user do
 		resources :registered_applications, except: [:index] 
 	end
+  
   resources :registered_applications, only: [:index]
+	
+	namespace :api, defaults: {format: :json} do
+	  match '/events', to: 'events#preflight', via: [:options]
+	  resources :events, only: [:create]
+	end
 	
 	
 	
