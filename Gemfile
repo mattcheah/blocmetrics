@@ -34,7 +34,8 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 
 gem 'devise', '~> 4.2.0'
 gem 'bootstrap-sass', '~> 3.3.6'
-
+gem 'chartkick'
+gem 'groupdate'
 
 group :production do
   gem 'pg'

@@ -1,6 +1,6 @@
 class API::EventsController < ApplicationController
     
-    skip_before_action :verify_authenticity_token
+    skip_before_action :verify_authenticity_token, :only => [:create, :preflight]
     
     before_filter :set_access_control_headers
     

@@ -1,3 +1,4 @@
+
 <h2>Application: <%= @app.name %></h2>
 <p>URL: <%= @app.url %></p>
 <%= link_to "Edit This Application", edit_registered_application_path, class: "btn btn-lg btn-warning" %>
@@ -5,7 +6,12 @@
 
 <h3>Events on <%= @app.url %></h3>
 <div class="container">
-
+    
+    <p>Pageviews By Day</p>
+    <%= line_chart @app.events.where({name: "Pageview"}).group_by_day(:created_at).count %>
+    <p>Types of occurances:</p>
+    <%= pie_chart @app.events.group(:name).count %>
+    
     <% @events.each do |key, value| %>
         <div class="event">
             <h4><%= key %></h4>

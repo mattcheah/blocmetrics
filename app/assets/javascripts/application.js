@@ -14,12 +14,15 @@
 //= require jquery_ujs
 //= require turbolinks
 //= require bootstrap-sprockets
+//= require Chart.bundle
+//= require chartkick
 //= require_tree .
+
 
 var blocmetrics = {}
 
-blocmetrics.report = function(trackingCode, eventName) {
-    var event = {event: {name: eventName}, trackingCode: trackingCode};
+blocmetrics.record = function(trackingCode, eventName) {
+    var event = {event: {name: eventName, trackingCode: trackingCode}};
 
     var request = new XMLHttpRequest();
     request.open("POST", "http://blocmetrics.mattcheah.c9users.io/api/events", true);
