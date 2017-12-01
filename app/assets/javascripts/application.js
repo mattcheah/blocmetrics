@@ -19,13 +19,13 @@
 //= require_tree .
 
 
-var blocmetrics = {}
+var Cheahlytics = {}
 
-blocmetrics.record = function(trackingCode, eventName) {
+Cheahlytics.record = function(trackingCode, eventName) {
     var event = {event: {name: eventName, trackingCode: trackingCode}};
 
     var request = new XMLHttpRequest();
-    request.open("POST", "http://blocmetrics.mattcheah.c9users.io/api/events", true);
+    request.open("POST", "http://Cheahlytics.mattcheah.c9users.io/api/events", true);
     request.setRequestHeader('Content-Type', 'application/json');
     request.send(JSON.stringify(event));
     
