@@ -28,7 +28,7 @@ ActiveRecord::Schema.define(version: 20170510160224) do
     t.integer  "user_id"
     t.datetime "created_at",                null: false
     t.datetime "updated_at",                null: false
-    t.integer  "code",       default: 7677
+    t.integer  "code",       default: 8622
   end
 
   add_index "registered_applications", ["user_id"], name: "index_registered_applications_on_user_id"
