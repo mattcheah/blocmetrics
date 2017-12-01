@@ -39,6 +39,7 @@ gem 'groupdate'
 group :production do
   gem 'pg'
   gem 'rails_12factor'
+  gem 'faker'
 end
 
 group :development, :test do
